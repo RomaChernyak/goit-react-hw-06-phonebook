@@ -49,6 +49,7 @@ export const App = () => {
       <ContactForm
         addContact={handleAddContact}
       />
+      
       <h2>Contacts</h2>
       <Filter
         handleSearch={handleSearch}
