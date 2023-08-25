@@ -44,6 +44,7 @@ export const ContactForm = ({ addContact }) => {
             >
                 Name
                 <input
+                    className={css.phonebook__input}
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -58,6 +59,7 @@ export const ContactForm = ({ addContact }) => {
             >
                 Number
                 <input
+                    className={css.phonebook__input}
                     type="tel"
                     name="number"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -69,7 +71,7 @@ export const ContactForm = ({ addContact }) => {
 
             <button
                 type="submit"
-                className={css.phonebook__add}
+                className={css.phonebook__button}
             >
                 Add contact
             </button>

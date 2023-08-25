@@ -8,12 +8,15 @@ export const ContactList = ({ contacts, deleteContact }) => {
                 ?
                 (contacts.map(({ name, id, number }) => (
                     <li key={id}>
-                        <span>{name}</span>
-                        <span>{number}</span>
+                        <div className={css.phonebook__contact}>
+                            <span>{name}</span>
+                            <span>{number}</span>
+                        </div>
+                        
                         <button
+                            className={css.contact__button}
                             type="button"
                             onClick={() => deleteContact(id)}
-                            className={css.contact__item}
                         >
                             Delete
                         </button>
