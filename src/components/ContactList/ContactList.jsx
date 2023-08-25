@@ -1,38 +1,28 @@
-import PropTypes from "prop-types";
-import { ItemList, Item, Contact, Button } from "./ContactList.styled.jsx";
+import { useSelector } from "react-redux";
+import { selectFilteredContacts } from "redux/selectors";
 
-export const ContactList = ({ contacts, deleteContact }) => {
-    return (
-        <ItemList>
-            {contacts.length !== 0
-                ?
-                (contacts.map(({ name, id, number }) => (
-                    <Item key={id}>
-                        <Contact>
-                            <span>{name}</span>
-                            <span>{number}</span>
-                        </Contact>
-                        
-                        <Button
-                            type="button"
-                            onClick={() => deleteContact(id)}
-                        >
-                            Delete
-                        </Button>
-                    </Item>
-                )))
-                :
-                (<Item>
-                    <p className="phonebook__info">Unfortunately, but you do not have any contacts.</p>
-                </Item>)
-            }
-        </ItemList>
-    )
+import { ContactListItem } from "../ContactListItem/ContactListItem";
+import { List } from "./ContactList.styled";
+
+
+
+
+export const ContactList = () => {
+
+  const filteredContacts = useSelector(selectFilteredContacts);
+  
+  return (
+    <>
+    <List>    
+        {filteredContacts.map(contact => (
+            <ContactListItem
+              key={contact.id}
+              renderListItem={contact}
+            />            
+          )
+        )}    
+    </List>  
+    </> 
+  );
 };
 
-ContactList.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.objectOf(
-        PropTypes.string.isRequired
-    )).isRequired,
-    deleteContact: PropTypes.func.isRequired,
-};
