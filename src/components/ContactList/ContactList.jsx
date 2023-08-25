@@ -1,33 +1,32 @@
 import PropTypes from "prop-types";
-import css from "./ContactList.module.css";
+import { ItemList, Item, Contact, Button } from "./ContactList.styled.jsx";
 
 export const ContactList = ({ contacts, deleteContact }) => {
     return (
-        <ul className={css.phonebook__list}>
+        <ItemList>
             {contacts.length !== 0
                 ?
                 (contacts.map(({ name, id, number }) => (
-                    <li key={id}>
-                        <div className={css.phonebook__contact}>
+                    <Item key={id}>
+                        <Contact>
                             <span>{name}</span>
                             <span>{number}</span>
-                        </div>
+                        </Contact>
                         
-                        <button
-                            className={css.contact__button}
+                        <Button
                             type="button"
                             onClick={() => deleteContact(id)}
                         >
                             Delete
-                        </button>
-                    </li>
+                        </Button>
+                    </Item>
                 )))
                 :
-                (<li>
+                (<Item>
                     <p className="phonebook__info">Unfortunately, but you do not have any contacts.</p>
-                </li>)
+                </Item>)
             }
-        </ul>
+        </ItemList>
     )
 };
 

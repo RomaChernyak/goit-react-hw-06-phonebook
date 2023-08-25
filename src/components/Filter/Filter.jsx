@@ -1,17 +1,16 @@
 import PropTypes from "prop-types";
-import css from "./Filter.module.css";
+import { Label, Input } from "./Filter.styled.jsx";
 
 export const Filter = ({ handleSearch }) => {
     return ( 
-        <label className={css.phonebook__label}>
+        <Label>
             Find contact by name:
-            <input
-                className={css.phonebook__input}
+            <Input
                 type="text"
                 name="filter"
                 onChange={handleSearch}
             />
-        </label>
+        </Label>
     );
 };
 

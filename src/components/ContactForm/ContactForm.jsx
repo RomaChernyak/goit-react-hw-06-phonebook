@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
-import css from "./ContactForm.module.css";
+import { Form, Label, Input, Button } from "./ContactForm.styled";
 
 export const ContactForm = ({ addContact }) => {
     const [name, getName] = useState('');
@@ -33,18 +33,14 @@ export const ContactForm = ({ addContact }) => {
     };
 
     return ( 
-        <form
-            className={css.phonebook__form}
+        <Form
             name="phonebook_form"
             autoComplete="on"
             onSubmit={handleForm}
         >
-            <label
-                className={css.phonebook__label}
-            >
+            <Label>
                 Name
-                <input
-                    className={css.phonebook__input}
+                <Input
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -52,14 +48,11 @@ export const ContactForm = ({ addContact }) => {
                     required
                     onChange={handleChange}
                 />
-            </label>
+            </Label>
 
-            <label
-                className={css.phonebook__label}
-            >
+            <Label>
                 Number
-                <input
-                    className={css.phonebook__input}
+                <Input
                     type="tel"
                     name="number"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -67,15 +60,14 @@ export const ContactForm = ({ addContact }) => {
                     required
                     onChange={handleChange}
                 />
-            </label>
+            </Label>
 
-            <button
+            <Button
                 type="submit"
-                className={css.phonebook__button}
             >
                 Add contact
-            </button>
-        </form>
+            </Button>
+        </Form>
     );
 };
 

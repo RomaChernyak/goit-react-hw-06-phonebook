@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Notiflix from "notiflix";
 import { ContactForm, ContactList, Filter, defaultContacts } from "components";
-import css from "./App.module.css";
+import { Container } from "./App.styled.jsx";
 
 export const App = () => {
   const [contacts, setContacts] = useState(
@@ -46,14 +46,14 @@ export const App = () => {
 
   return (
     <>
-      <div className={css.container}>
+      <Container>
         <h1>Phonebook</h1>
         <ContactForm
           addContact={handleAddContact}
         />
-      </div>
+      </Container>
       
-      <div className={css.container}>
+      <Container>
         <h2>Contacts</h2>
         <Filter
           handleSearch={handleSearch}
@@ -62,7 +62,7 @@ export const App = () => {
           contacts={handleFilter()}
           deleteContact={handleDeleteContact}
         />
-      </div>
+      </Container>
     </>
   );
 };
